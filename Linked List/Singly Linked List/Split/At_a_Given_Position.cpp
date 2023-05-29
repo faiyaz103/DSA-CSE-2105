@@ -31,24 +31,23 @@ void creation(node **head, int data){
 /*------------------------------*/
 
 void split(node **head, node **head2, int pos, int n){
-    if( pos==0 || pos>n-1){
+    
+    if(pos<=0 || pos>n-1){
         cout<<"Invalid Position"<<endl;
+        return;
     }
-    else if(pos==1){
-        *head2=(*head)->link;
-        (*head)->link=NULL;
+    
+    node *temp=*head, *track;
+    int i=0;
+    
+    while(i<pos){
+        track=temp;
+        temp=temp->link;
+        i++;
     }
-    else{
-        int i=0;
-        node *temp=*head,*src;
-        while(i<pos){
-            src=temp;
-            temp=temp->link;
-            i++;
-        }
-        src->link=NULL;
-        *head2=temp;
-    }
+    
+    track->link=NULL;
+    *head2=temp;
 }
 
 
