@@ -1,4 +1,3 @@
-//General Deletion
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -34,7 +33,7 @@ void creation(node **head, int data){
 
 
 /*--------First Deletion--------*/
-void first_del(node **head){
+void firstdel(node **head){
 
     *head=(*head)->link;
 }
@@ -42,33 +41,54 @@ void first_del(node **head){
 
 
 
+/*--------Last Deletion--------*/
+void lastdel(node **head){
+    
+    node *temp=*head;
+    
+    while(temp->link->link!=NULL){
+        temp=temp->link;
+    }
+    temp->link=NULL;
+}
+/*------------------------------*/
+
+
+
 /*-------Target Deletion-------*/
 void delt(node **head, int target){
-
+    
     int flag=0;
-
     node *temp=*head;
-    if(temp->data==target){
-            flag=1;
-        return first_del(head);
-    }
-    else{
-        while(temp->link!=NULL){
-            if(temp->link->data==target){
-                temp->link=temp->link->link;
-                flag=1;
-                break;
+    node *track=*head;
+    while(temp!=NULL){
+        
+        if(temp->data==target){
+            if(temp==(*head)){
+                firstdel(head);
+                return;
+            }
+            else if(temp->link==NULL){
+                lastdel(head);
+                return;
             }
             else{
-                temp=temp->link;
+                track->link=track->link->link;
+                return;
             }
+            flag=1;
+        }
+        else{
+            track=temp;
+            temp=temp->link;
         }
     }
-
+    
     if(flag==0){
-        cout<<"The element you want to delete is not present in the list"<<endl;
+        cout<<"Target element not found"<<endl;
     }
 }
+    
 /*------------------------------*/
 
 
