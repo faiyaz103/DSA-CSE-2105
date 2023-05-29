@@ -33,7 +33,7 @@ void creation(node **head, int data){
 
 
 /*--------Last Insertion--------*/
-void last_ins(node **head, int value){
+void lastins(node **head, int value){
 
     node *ptr=new node();
 
@@ -57,24 +57,24 @@ void after_ins(node **head, int target, int value){
     int flag=0;
 
     node *ptr=new node();
-
     ptr->data=value;
     ptr->link=NULL;
-
+    
     node *temp=*head;
+    
     while(temp!=NULL){
+        
         if(temp->data==target){
             if(temp->link==NULL){
-                last_ins(head,value);
-                flag=1;
-                break;
+                lastins(head,value);
+                return;
             }
             else{
                 ptr->link=temp->link;
                 temp->link=ptr;
-                flag=1;
-                break;
+                return;
             }
+            flag=1;
         }
         else{
             temp=temp->link;
