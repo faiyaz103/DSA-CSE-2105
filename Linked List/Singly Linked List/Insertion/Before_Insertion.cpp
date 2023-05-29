@@ -33,7 +33,7 @@ void creation(node **head, int data){
 
 
 /*--------First Insertion--------*/
-void first_ins(node **head, int value){
+void firstins(node **head, int value){
 
     node *ptr=new node();
 
@@ -47,32 +47,32 @@ void first_ins(node **head, int value){
 
 
 /*--------Before Insertion-------*/
-void before_ins(node **head, int target, int value){
+void before_ins(node **head, int target, int val){
 
     int flag=0;
 
     node *ptr=new node();
-
-    ptr->data=value;
+    ptr->data=val;
     ptr->link=NULL;
-
-    node *temp=*head,*src;
+    
+    node *temp=*head;
+    node *track=*head;
+    
     while(temp!=NULL){
+        
         if(temp->data==target){
             if(temp==*head){
-                first_ins(head,value);
-                flag=1;
-                break;
+                firstins(head,val);
+                return;
             }
             else{
-                ptr->link=temp;
-                src->link=ptr;
-                flag=1;
-                break;
+                ptr->link=track->link;
+                track->link=ptr;
+                return;
             }
         }
         else{
-            src=temp;
+            track=temp;
             temp=temp->link;
         }
     }
