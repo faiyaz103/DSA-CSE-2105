@@ -1,2 +1,3 @@
-# DSA-CSE-2105
-This repository is created for academic purpose. Here one can find implementations of some important data structures and algorithms.
+# Data Structures and Algorithms
+
+This repository contains implementations of various data structures and algorithms. It serves as a resource for learning and understanding fundamental concepts in computer science.
