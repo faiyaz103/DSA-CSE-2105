@@ -12,10 +12,16 @@ void Swap(int *a, int *b){
 void bubblesort(int a[], int n){
 
     for(int i=0; i<n-1; i++){
+        int swp=0;
         for(int j=0; j<(n-1)-i; j++){
             if(a[j]>a[j+1]){
                 Swap(&a[j],&a[j+1]);
+                swp=1;
             }
+        }
+
+        if(swp==0){ //swp=0 means no swap happened. That means already sorted and
+            break;  //no traversing needed.
         }
     }
 
