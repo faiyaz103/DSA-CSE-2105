@@ -55,10 +55,6 @@ void lastins(node **head, int value){
 void after_ins(node **head, int target, int value){
 
     int flag=0;
-
-    node *ptr=new node();
-    ptr->data=value;
-    ptr->link=NULL;
     
     node *temp=*head;
     
@@ -70,6 +66,8 @@ void after_ins(node **head, int target, int value){
                 return;
             }
             else{
+                node *ptr=new node();
+                ptr->data=value;
                 ptr->link=temp->link;
                 temp->link=ptr;
                 return;
