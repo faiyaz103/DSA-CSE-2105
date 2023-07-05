@@ -51,10 +51,6 @@ void before_ins(node **head, int target, int val){
 
     int flag=0;
 
-    node *ptr=new node();
-    ptr->data=val;
-    ptr->link=NULL;
-    
     node *temp=*head;
     node *track=*head;
     
@@ -66,6 +62,8 @@ void before_ins(node **head, int target, int val){
                 return;
             }
             else{
+                node *ptr=new node();
+                ptr->data=val;
                 ptr->link=track->link;
                 track->link=ptr;
                 return;
